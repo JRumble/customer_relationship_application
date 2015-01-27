@@ -125,13 +125,13 @@ class CRM
 		puts "[3] Email"
 		puts "[4] Note"
 		attribute = gets.chomp.to_i
-		puts @rolodex.display_attribute(attribute)
+		@rolodex.display_attribute(attribute)
 	end
 
 
 	def delete_contact
 		puts "Which contact ID would you like to delete?"
-		id = gets.chomp
+		id = gets.chomp!
     	@rolodex.delete(id)
 	end
 
