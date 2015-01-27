@@ -23,17 +23,17 @@ class Rolodex
 	end
 
 
-	# def modify_contact(id_find, choice, edit_attribute)
-	# 	c = find_contact(id_find)
-	#     case choice
-	#       when 1 then @contacts.each {|contact| puts contact[1]}
-	#       when 2 then c[1].replace(edit_attribute)
-	#       when 3 then c[2].replace(edit_attribute)
-	#       when 4 then c[3].replace(edit_attribute)
-	#       else
-	#         "Invalid entry, please try again."
-	#     end
-	# end
+	def modify_contact(id_find, choice, edit_attribute)
+		mod = find_contact(id_find)
+	    case choice
+	      when 1 then mod.first_name = edit_attribute
+	      when 2 then mod.last_name = edit_attribute
+	      when 3 then mod.email = edit_attribute
+	      when 4 then mod.note = edit_attribute
+	      else
+	        "Invalid entry, please try again."
+	    end
+	end
 
 
 	def display_contacts
@@ -51,14 +51,12 @@ class Rolodex
 	end
 
 	def display_attribute(attribute)
-		@contacts.each do |contact| 
-			
-# figure out how to pull the attribute after the ID - indexing?
+		@contacts.each do |contact| 	
 		case  attribute
-			when 1 then puts contact.index[1]
-	       	when 2 then puts contact.index[1]
-	       	when 3 then puts contact.index[2]
-	       	when 4 then puts contact.indes[3]
+			when 1 then puts contact.first_name
+	       	when 2 then puts contact.last_name
+	       	when 3 then puts contact.email
+	       	when 4 then puts contact.note
 	       	else
 	        	"That is not a valid entry, please try again."
 	      	end
@@ -66,8 +64,8 @@ class Rolodex
 	end
 
 	def delete(id)
-		del = find_contact(id)
-    	@contacts.delete(del)
+		del_id = find_contact(id_find)
+		@contacts.delete(del_id)				
 	end
 
 end
