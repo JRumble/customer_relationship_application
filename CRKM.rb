@@ -5,6 +5,9 @@ require_relative './Contact.rb'
 
 class CRM
 
+	def clear_screen
+		puts "\e[H\e[2J"
+	end
 
 	def initialize(name)
 		@name = name
@@ -88,7 +91,7 @@ class CRM
 				puts "[3] Email"
 				puts "[4] Note"
 				puts "Please enter the number of the attribute you would like to modify: "
-      			choice = gets.chomp
+      			choice = gets.chomp.to_i
       			puts "Enter modification:"
       			edit_attribute = gets.chomp!
       			@rolodex.modify_contact(id_find, choice, edit_attribute)
@@ -121,8 +124,8 @@ class CRM
 		puts "[2] Last Name"
 		puts "[3] Email"
 		puts "[4] Note"
-		attribute = gets.chomp
-		@rolodex.display_attribute(attribute)
+		attribute = gets.chomp.to_i
+		puts @rolodex.display_attribute(attribute)
 	end
 
 
