@@ -55,10 +55,10 @@ class Rolodex
 			
 # figure out how to pull the attribute after the ID - indexing?
 		case  attribute
-			when 1 then puts contact.first_name 
-	       	when 2 then puts contact.last_name
-	       	when 3 then puts contact.email
-	       	when 4 then puts contact.note
+			when 1 then puts contact.index[1]
+	       	when 2 then puts contact.index[1]
+	       	when 3 then puts contact.index[2]
+	       	when 4 then puts contact.indes[3]
 	       	else
 	        	"That is not a valid entry, please try again."
 	      	end
