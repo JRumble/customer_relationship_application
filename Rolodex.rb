@@ -2,13 +2,15 @@
 
 class Rolodex
 
-require_relative './Contact.rb'
+#require_relative './Contact.rb'
 
 
 	@@ids = 1001
 
 	def initialize
 		@contacts = []
+		#@contacts= Contact.new("jesse", "jp@rogers.com", "can tie shoes")
+		#@contacts= Contact.new("donna", "der@rogers.com", "call weekly")
 	end
 
 
@@ -21,16 +23,17 @@ require_relative './Contact.rb'
 	end
 
 
-	def modify_contact(id_find, choice, edit_attribute)
-	    case choice
-	      when 1 then @first_name = edit_attribute
-	      when 2 then @last_name = edit_attribute
-	      when 3 then @email = edit_attribute
-	      when 4 then @note = edit_attribute
-	      else
-	        "Invalid entry, please try again."
-	    end
-	end
+	# def modify_contact(id_find, choice, edit_attribute)
+	# 	c = find_contact(id_find)
+	#     case choice
+	#       when 1 then @contacts.each {|contact| puts contact[1]}
+	#       when 2 then c[1].replace(edit_attribute)
+	#       when 3 then c[2].replace(edit_attribute)
+	#       when 4 then c[3].replace(edit_attribute)
+	#       else
+	#         "Invalid entry, please try again."
+	#     end
+	# end
 
 
 	def display_contacts
@@ -48,12 +51,14 @@ require_relative './Contact.rb'
 	end
 
 	def display_attribute(attribute)
-		@contacts.each do |contact|
+		@contacts.each do |contact| 
+			
+# figure out how to pull the attribute after the ID - indexing?
 		case  attribute
-			when 1 then  puts "#{first_name}"
-	       	when 2 then puts "#{last_name}"
-	       	when 3 then puts "#{email}"
-	       	when 4 then puts "#{note}"
+			when 1 then puts contact.first_name 
+	       	when 2 then puts contact.last_name
+	       	when 3 then puts contact.email
+	       	when 4 then puts contact.note
 	       	else
 	        	"That is not a valid entry, please try again."
 	      	end
@@ -61,7 +66,6 @@ require_relative './Contact.rb'
 	end
 
 	def delete(id)
-		#@contacts.each {|contact| contact.delete if contact.id.to_s == id}
 		del = find_contact(id)
     	@contacts.delete(del)
 	end
