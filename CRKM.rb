@@ -73,9 +73,6 @@ class CRM
 		note = gets.chomp.capitalize
 
 		new_contact = Contact.new(first_name, last_name, email, note)
-		# contact = Contact.new("Jesse", "Paget", "jesse.paget@rogers.com", "the dude")
-		# contact = Contact.new("Donna", "Rumble", "der@rogers.com", "needs phone call weekly")
-		# contact = Contact.new("Ben", "Sutton", "b.sutton@rogers.com", "Jesse friend")
 		@rolodex.add_contact(new_contact)
 	end
 
@@ -93,10 +90,10 @@ class CRM
 				puts "Please enter the number of the attribute you would like to modify: "
       			choice = gets.chomp.to_i
       			puts "Enter modification:"
-      			edit_attribute = gets.chomp!
+      			edit_attribute = gets.chomp
       			@rolodex.modify_contact(id_find, choice, edit_attribute)
       			puts "Modification complete: "
-      			@rolodex.find_contact(id_find)
+      			puts @rolodex.modify_contact(id_find, choice, edit_attribute)
     		elsif response == 'No'
       			modify_contact
     		else
@@ -113,8 +110,8 @@ class CRM
 	def display_contact
 		puts "Please enter your ID"
 		print "ID: "
-		id_find = gets.chomp
-		@rolodex.find_contact(id_find)	
+		id_find = gets.chomp.to_i
+		puts @rolodex.find_contact(id_find)	
 	end
 
 
@@ -131,8 +128,8 @@ class CRM
 
 	def delete_contact
 		puts "Which contact ID would you like to delete?"
-		id = gets.chomp!
-    	@rolodex.delete(id)
+		id = gets.chomp.to_i
+		@rolodex.delete_contact(id)
 	end
 
 

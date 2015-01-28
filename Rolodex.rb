@@ -9,8 +9,6 @@ class Rolodex
 
 	def initialize
 		@contacts = []
-		#@contacts= Contact.new("jesse", "jp@rogers.com", "can tie shoes")
-		#@contacts= Contact.new("donna", "der@rogers.com", "call weekly")
 	end
 
 
@@ -24,12 +22,12 @@ class Rolodex
 
 
 	def modify_contact(id_find, choice, edit_attribute)
-		mod = find_contact(id_find)
+		modify = find_contact(id_find)
 	    case choice
-	      when 1 then mod.first_name = edit_attribute
-	      when 2 then mod.last_name = edit_attribute
-	      when 3 then mod.email = edit_attribute
-	      when 4 then mod.note = edit_attribute
+	      when 1 then first_name = edit_attribute
+	      when 2 then last_name = edit_attribute
+	      when 3 then email = edit_attribute
+	      when 4 then note = edit_attribute
 	      else
 	        "Invalid entry, please try again."
 	    end
@@ -41,13 +39,7 @@ class Rolodex
 	end
 
 	def find_contact(id_find)
-		@contacts.each 	do |contact| 
-							if id_find == contact.id.to_s
-								puts contact
-							else
-								"That contact does not exist, please try again."
-							end
-						end
+		@contacts.find {|contact| id_find == contact.id}						
 	end
 
 	def display_attribute(attribute)
@@ -63,9 +55,9 @@ class Rolodex
 		end		
 	end
 
-	def delete(id)
-		del_id = find_contact(id_find)
-		@contacts.delete(del_id)				
+	def delete_contact(id)
+		del_id = find_contact(id)
+		@contacts.delete(del_id)	
 	end
 
 end
